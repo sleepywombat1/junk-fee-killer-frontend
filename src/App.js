@@ -6,6 +6,8 @@ import Input from "./components/ui/Input";
 import { UploadCloud, ShieldCheck } from "lucide-react";
 import axios from "axios";
 
+console.log("Backend URL:", process.env.REACT_APP_BACKEND_URL);
+
 export default function FileUpload() {
   const [file, setFile] = useState(null);
   const [uploading, setUploading] = useState(false);
