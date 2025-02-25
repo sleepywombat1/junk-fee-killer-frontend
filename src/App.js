@@ -31,7 +31,7 @@ export default function FileUpload() {
     formData.append("file", file);
 
     try {
-      const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/upload`, formData, {
+      const res = await axios.post("https://junk-fee-killer-backend.onrender.com/upload", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       setResponse(res.data);
