@@ -36,7 +36,17 @@ export default function FileUpload() {
       });
       setResponse(res.data);
     } catch (err) {
-      setError("Error uploading file. Please try again.");
+      console.error("Upload Error:", err);
+      if (err.response) {
+        console.error("Server Response:", err.response);
+        setError(`Error: ${err.response.status} - ${err.response.data?.error || "Unknown error"}`);
+      } else if (err.request) {
+        console.error("No Response from Server:", err.request);
+        setError("No response from server. Please check your internet connection.");
+      } else {
+        console.error("Request Error:", err.message);
+        setError("Error uploading file. Please try again.");
+      }    
     } finally {
       setUploading(false);
     }
