@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+  <!-- Definitions for gradients and filters -->
+  <defs>
+    <!-- Rich deep gradient background -->
+    <linearGradient id="luxuryGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#020617" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+    
+    <!-- Premium gold accent with enhanced shimmer -->
+    <linearGradient id="goldAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#b45309" />
+      <stop offset="25%" stop-color="#fbbf24" />
+      <stop offset="50%" stop-color="#fef3c7" />
+      <stop offset="75%" stop-color="#fbbf24" />
+      <stop offset="100%" stop-color="#b45309" />
+    </linearGradient>
+    
+    <!-- Refined platinum accent -->
+    <linearGradient id="platinumAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#64748b" />
+      <stop offset="50%" stop-color="#f8fafc" />
+      <stop offset="100%" stop-color="#64748b" />
+    </linearGradient>
+    
+    <!-- Enhanced elegant shadow -->
+    <filter id="luxuryShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2" />
+      <feOffset dx="1" dy="1" result="offsetblur" />
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.4" />
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Base shape - Clean geometric form with enhanced depth -->
+  <circle cx="150" cy="150" r="120" fill="url(#luxuryGradient)" filter="url(#luxuryShadow)" />
+  
+  <!-- Refined outer premium ring -->
+  <circle cx="150" cy="150" r="105" fill="none" stroke="url(#goldAccent)" stroke-width="2" />
+  
+  <!-- Subtle secondary ring for depth -->
+  <circle cx="150" cy="150" r="110" fill="none" stroke="url(#goldAccent)" stroke-width="0.5" opacity="0.4" />
+  
+  <!-- Enhanced subtle highlights for depth - NOW STOPPING AT GOLD DOTS -->
+  <!-- First inner circle -->
+  <circle cx="150" cy="150" r="95" fill="none" stroke="url(#platinumAccent)" stroke-width="0.7" opacity="0.2" />
+  
+  <!-- Second inner circle -->
+  <circle cx="150" cy="150" r="85" fill="none" stroke="url(#platinumAccent)" stroke-width="0.6" opacity="0.15" />
+  
+  <!-- Third inner circle - Last one before gold dots at r=75 -->
+  <circle cx="150" cy="150" r="75" fill="none" stroke="url(#platinumAccent)" stroke-width="0.5" opacity="0.1" />
+  
+  <!-- Inner geometric element - diamond shape with refined proportions -->
+  <path d="M150,75 L205,150 L150,225 L95,150 Z" 
+        fill="none" 
+        stroke="url(#platinumAccent)" 
+        stroke-width="1.5" />
+  
+  <!-- Crossing accent lines with enhanced precision and slight tapering -->
+  <line x1="110" y1="110" x2="190" y2="190" stroke="url(#goldAccent)" stroke-width="1.75" />
+  <line x1="190" y1="110" x2="110" y2="190" stroke="url(#goldAccent)" stroke-width="1.75" />
+  
+  <!-- Central premium element with refined proportions -->
+  <circle cx="150" cy="150" r="28" fill="url(#luxuryGradient)" stroke="url(#goldAccent)" stroke-width="2" />
+  
+  <!-- Abstract minimal symbol in center with enhanced elegance -->
+  <path d="M138,138 L138,162 L162,162 L162,138 Z" 
+        fill="none" 
+        stroke="url(#platinumAccent)" 
+        stroke-width="1.25" />
+  
+  <!-- Smaller platinum accent points at the ends of the gold lines -->
+  <circle cx="110" cy="110" r="2" fill="url(#platinumAccent)" />
+  <circle cx="190" cy="190" r="2" fill="url(#platinumAccent)" />
+  <circle cx="190" cy="110" r="2" fill="url(#platinumAccent)" />
+  <circle cx="110" cy="190" r="2" fill="url(#platinumAccent)" />
+  
+  <!-- Gold accent points at cardinal positions -->
+  <circle cx="150" cy="75" r="3" fill="url(#goldAccent)" />
+  <circle cx="150" cy="225" r="3" fill="url(#goldAccent)" />
+  <circle cx="75" cy="150" r="3" fill="url(#goldAccent)" />
+  <circle cx="225" cy="150" r="3" fill="url(#goldAccent)" />
+  
+  <!-- Additional subtle accent highlighting for the diamond shape -->
+  <path d="M150,80 L200,150 L150,220 L100,150 Z" 
+        fill="none" 
+        stroke="#ffffff" 
+        stroke-width="0.3" 
+        opacity="0.05" />
+</svg>
