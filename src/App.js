@@ -1,78 +1,125 @@
-// App.js - Main application component
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import HomePage from './pages/HomePage';
-import DashboardPage from './pages/DashboardPage';
-import BillUploadPage from './pages/BillUploadPage';
-import BillAnalysisPage from './pages/BillAnalysisPage';
-import LoginPage from './pages/LoginPage';
-import RegisterPage from './pages/RegisterPage';
-import AboutPage from './pages/AboutPage';
-import { AuthProvider, useAuth } from './context/AuthContext';
 import './App.css';
-import './premium.css';  // Import the new premium styles
 
-// Protected route wrapper component
-const ProtectedRoute = ({ children }) => {
-  const { currentUser } = useAuth();
-  
-  if (!currentUser) {
-    return <Navigate to="/login" />;
-  }
-  
-  return children;
-};
+// Page Components
+import LandingPage from './pages/LandingPage';
+import Dashboard from './pages/Dashboard';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import BillAnalyzer from './pages/BillAnalyzer';
+import Profile from './pages/Profile';
+
+// Layout Components
+import Header from './components/Header';
+import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
+
+// Authentication Context
+import { AuthProvider, useAuth } from './context/AuthContext';
+
+// Notification Component
+import NotificationCenter from './components/NotificationCenter';
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
-    // Scroll to top on page changes
-    window.scrollTo(0, 0);
+    // Simulate initial loading
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1500);
+    
+    // Add scroll reveal animation detection
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+    
+    document.querySelectorAll('.reveal-on-scroll').forEach(element => {
+      observer.observe(element);
+    });
+    
+    return () => {
+      observer.disconnect();
+    };
   }, []);
+
+  if (isLoading) {
+    return (
+      <div className="loading-screen">
+        <div className="loading-logo">
+          <img src="/logo.svg" alt="Junk Fee Killer" />
+        </div>
+        <div className="loading-spinner"></div>
+      </div>
+    );
+  }
 
   return (
     <AuthProvider>
       <Router>
-        <div className="app-container">
-          <Navbar />
+        <ScrollToTop />
+        <div className="app">
+          <Header />
           <main>
             <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/login" element={<LoginPage />} />
-              <Route path="/register" element={<RegisterPage />} />
-              <Route path="/about" element={<AboutPage />} />
+              <Route path="/" element={<LandingPage />} />
               <Route 
-                path="/dashboard" 
+                path="/dashboard/*" 
                 element={
                   <ProtectedRoute>
-                    <DashboardPage />
+                    <Dashboard />
+                  </ProtectedRoute>
+                } 
+              />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route 
+                path="/analyze" 
+                element={
+                  <ProtectedRoute>
+                    <BillAnalyzer />
                   </ProtectedRoute>
                 } 
               />
               <Route 
-                path="/upload" 
+                path="/profile" 
                 element={
                   <ProtectedRoute>
-                    <BillUploadPage />
+                    <Profile />
                   </ProtectedRoute>
                 } 
               />
-              <Route 
-                path="/analysis/:billId" 
-                element={
-                  <ProtectedRoute>
-                    <BillAnalysisPage />
-                  </ProtectedRoute>
-                } 
-              />
+              <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </main>
           <Footer />
+          <NotificationCenter />
         </div>
       </Router>
     </AuthProvider>
   );
+}
+
+// Protected Route Component
+function ProtectedRoute({ children }) {
+  const { isAuthenticated, isLoading } = useAuth();
+  
+  if (isLoading) {
+    return <div className="page-loading">Loading...</div>;
+  }
+  
+  if (!isAuthenticated) {
+    return <Navigate to="/login" replace />;
+  }
+  
+  return children;
 }
 
 export default App;
