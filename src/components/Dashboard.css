@@ -1,0 +1,382 @@
+.dashboard {
+  padding: 2rem;
+  max-width: 1280px;
+  margin: 0 auto;
+  font-family: 'Inter', sans-serif;
+}
+
+.dashboard-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.dashboard-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #3498db, #1d6fa5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.dashboard-subtitle {
+  font-size: 1.1rem;
+  color: #718096;
+  font-weight: 400;
+}
+
+/* Stats Section */
+.dashboard-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.stat-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  position: relative;
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background-color: #e2e8f0;
+  transition: background-color 0.3s ease;
+}
+
+.stat-card.primary::before {
+  background-color: #3498db;
+}
+
+.stat-card.warning::before {
+  background-color: #f39c12;
+}
+
+.stat-card.success::before {
+  background-color: #2ecc71;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.stat-icon {
+  width: 50px;
+  height: 50px;
+  background: rgba(52, 152, 219, 0.1);
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 1rem;
+  color: #3498db;
+  font-size: 1.5rem;
+}
+
+.stat-card.warning .stat-icon {
+  background: rgba(243, 156, 18, 0.1);
+  color: #f39c12;
+}
+
+.stat-card.success .stat-icon {
+  background: rgba(46, 204, 113, 0.1);
+  color: #2ecc71;
+}
+
+.stat-content h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0 0 0.25rem 0;
+}
+
+.stat-content p {
+  margin: 0;
+  color: #718096;
+  font-size: 0.9rem;
+}
+
+/* Dashboard Sections */
+.dashboard-sections {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 992px) {
+  .dashboard-sections {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.dashboard-section {
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.section-header h2 {
+  font-size: 1.25rem;
+  margin: 0;
+  font-weight: 600;
+}
+
+/* Bills List */
+.bills-list {
+  padding: 0.5rem;
+}
+
+.bill-card {
+  padding: 1rem;
+  margin: 0.5rem 0;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.bill-card:hover {
+  background-color: #f8fafc;
+}
+
+.bill-provider {
+  display: flex;
+  align-items: center;
+}
+
+.provider-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 1rem;
+  font-weight: bold;
+  font-size: 1rem;
+  color: white;
+}
+
+.provider-icon.cellular {
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+}
+
+.provider-icon.utility {
+  background: linear-gradient(135deg, #f2994a, #f2c94c);
+}
+
+.provider-icon.internet {
+  background: linear-gradient(135deg, #6e48aa, #9d50bb);
+}
+
+.provider-info h4 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.provider-info p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #718096;
+}
+
+.bill-details {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.bill-date {
+  font-size: 0.85rem;
+  color: #718096;
+}
+
+.bill-amount {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.bill-status {
+  display: flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  gap: 0.25rem;
+}
+
+.bill-status.flagged {
+  background: rgba(243, 156, 18, 0.1);
+  color: #f39c12;
+}
+
+.bill-status.resolved {
+  background: rgba(46, 204, 113, 0.1);
+  color: #2ecc71;
+}
+
+/* Alerts */
+.alerts-list {
+  padding: 0.5rem;
+}
+
+.alert-card {
+  padding: 1rem;
+  margin: 0.5rem 0;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  border-left: 3px solid;
+  background-color: #f8fafc;
+}
+
+.alert-card.high {
+  border-color: #e53e3e;
+}
+
+.alert-card.medium {
+  border-color: #f39c12;
+}
+
+.alert-card.low {
+  border-color: #3498db;
+}
+
+.alert-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 1rem;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.alert-card.high .alert-icon {
+  background: rgba(229, 62, 62, 0.1);
+  color: #e53e3e;
+}
+
+.alert-card.medium .alert-icon {
+  background: rgba(243, 156, 18, 0.1);
+  color: #f39c12;
+}
+
+.alert-card.low .alert-icon {
+  background: rgba(52, 152, 219, 0.1);
+  color: #3498db;
+}
+
+.alert-content {
+  flex: 1;
+}
+
+.alert-content h4 {
+  margin: 0 0 0.25rem 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.alert-content p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #718096;
+}
+
+/* Buttons */
+.btn-secondary {
+  background: transparent;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #4a5568;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: #f8fafc;
+  border-color: #cbd5e0;
+}
+
+.btn-text {
+  background: transparent;
+  border: none;
+  color: #3498db;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-text:hover {
+  background-color: rgba(52, 152, 219, 0.1);
+}
+
+/* Loading State */
+.dashboard-loading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+}
+
+.loader {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@media (max-width: 768px) {
+  .bill-details {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
+  }
+  
+  .dashboard-stats {
+    grid-template-columns: 1fr;
+  }
+}
