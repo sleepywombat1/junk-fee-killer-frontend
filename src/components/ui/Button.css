@@ -1,0 +1,196 @@
+/* Button.css - Styles for the Button component */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  white-space: nowrap;
+  text-decoration: none;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Button Size Variations */
+.btn-small {
+  font-size: 0.875rem;
+  padding: 0.5rem 1rem;
+  min-height: 2.25rem;
+}
+
+.btn-medium {
+  font-size: 1rem;
+  padding: 0.75rem 1.5rem;
+  min-height: 2.75rem;
+}
+
+.btn-large {
+  font-size: 1.125rem;
+  padding: 1rem 2rem;
+  min-height: 3.25rem;
+}
+
+/* Button Style Variations */
+.btn-primary {
+  background-color: #0066cc;
+  color: white;
+  border-color: #0066cc;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+  background-color: #0055aa;
+  border-color: #0055aa;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 102, 204, 0.2);
+}
+
+.btn-primary:active {
+  background-color: #004999;
+  border-color: #004999;
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background-color: #1a1a1a;
+  color: white;
+  border-color: #1a1a1a;
+}
+
+.btn-secondary:hover, .btn-secondary:focus {
+  background-color: #333333;
+  border-color: #333333;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-secondary:active {
+  background-color: #000000;
+  border-color: #000000;
+  transform: translateY(0);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: #0066cc;
+  border-color: #0066cc;
+}
+
+.btn-outline:hover, .btn-outline:focus {
+  background-color: rgba(0, 102, 204, 0.05);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 102, 204, 0.1);
+}
+
+.btn-outline:active {
+  background-color: rgba(0, 102, 204, 0.1);
+  transform: translateY(0);
+}
+
+.btn-text {
+  background-color: transparent;
+  color: #0066cc;
+  border-color: transparent;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.btn-text:hover, .btn-text:focus {
+  background-color: rgba(0, 102, 204, 0.05);
+}
+
+.btn-text:active {
+  background-color: rgba(0, 102, 204, 0.1);
+}
+
+/* Full width button */
+.btn-full-width {
+  width: 100%;
+  display: flex;
+}
+
+/* Disabled state */
+.btn-disabled,
+.btn[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+  box-shadow: none;
+  transform: none;
+}
+
+/* Icon positioning */
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-icon-left {
+  margin-right: 0.5rem;
+}
+
+.btn-icon-right {
+  margin-left: 0.5rem;
+}
+
+/* Button text */
+.btn-text {
+  display: inline-block;
+  line-height: 1;
+}
+
+/* Button hover effects */
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: width 0.5s ease, height 0.5s ease, opacity 0.5s ease;
+}
+
+.btn:hover::before, .btn:focus::before {
+  width: 120%;
+  height: 400px;
+  opacity: 1;
+}
+
+/* Focus state for accessibility */
+.btn:focus {
+  outline: none;
+}
+
+.btn:focus-visible {
+  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.25);
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  .btn-small {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.8rem;
+  }
+  
+  .btn-medium {
+    font-size: 0.875rem;
+    padding: 0.6rem 1.2rem;
+  }
+  
+  .btn-large {
+    font-size: 1rem;
+    padding: 0.8rem 1.6rem;
+  }
+}

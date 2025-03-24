@@ -1,0 +1,159 @@
+/* Card.css - Styles for the Card component */
+
+.card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+/* Card variants */
+.card-default {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f0f0f0;
+}
+
+.card-outlined {
+  border: 1px solid #e0e0e0;
+  box-shadow: none;
+}
+
+.card-elevated {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border: none;
+}
+
+/* Hoverable card style */
+.card-hoverable {
+  cursor: pointer;
+}
+
+.card-hoverable:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+/* Clickable card style */
+.card-clickable {
+  cursor: pointer;
+}
+
+.card-clickable:active {
+  transform: scale(0.98);
+}
+
+.card-clickable:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.25);
+}
+
+/* Card header */
+.card-header {
+  padding: 1.5rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+/* Card title */
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Card content */
+.card-content {
+  padding: 1.5rem;
+}
+
+/* Card footer */
+.card-footer {
+  padding: 1.5rem;
+  border-top: 1px solid #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* Card image container */
+.card-image {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.card-image-top {
+  order: -1;
+}
+
+.card-image-bottom {
+  order: 1;
+}
+
+.card-image-full {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+}
+
+.card-image-full ~ .card-header,
+.card-image-full ~ .card-content,
+.card-image-full ~ .card-footer {
+  position: relative;
+  z-index: 1;
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(5px);
+}
+
+/* Card image */
+.card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.card-hoverable:hover .card-img {
+  transform: scale(1.05);
+}
+
+/* Card with a dark theme */
+.card-dark {
+  background-color: #1a1a1a;
+}
+
+.card-dark .card-header,
+.card-dark .card-footer {
+  border-color: #333333;
+}
+
+.card-dark .card-title {
+  color: #f5f5f5;
+}
+
+.card-dark .card-content {
+  color: #e0e0e0;
+}
+
+.card-dark.card-outlined {
+  border-color: #333333;
+}
+
+/* Card media query adjustments */
+@media (max-width: 768px) {
+  .card-header,
+  .card-content,
+  .card-footer {
+    padding: 1.25rem;
+  }
+  
+  .card-title {
+    font-size: 1.1rem;
+  }
+}
